@@ -76,14 +76,15 @@ module.exports = {
     },
     
     findByBrand(req,res){
-      let {brand} = req.params;
+      let {nomeMarca} = req.body;
       
       let brandCar =  car.filter((item)=>(
-        item.brand.toLowerCase().includes(brand.toLowerCase())
+        item.brand.toLowerCase().includes(nomeMarca.toLowerCase())
         )).map((item)=> { return {modelos: item.models}})
-        
-        res.json({brandCar})
-      },
+    
+      if(brandCar)
+        return res.json({brandCar})
+    },
 
 
       sorted(req,res){
